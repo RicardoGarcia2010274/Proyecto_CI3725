@@ -6,7 +6,8 @@
 
 digit = [0-9]
 letter = [a-zA-Z]
-whitespace = [ \t\r]
+whitespace = [ \t\r\n]
+coments = "$"~"$"
 True = true
 False = false
 create = "create"
@@ -32,17 +33,21 @@ while = "while"
 bool = "boole"
 if = "if"
 else = "else"
-
+end = "end"
+store = "store" 
+bot = "bot"
+activate = "activate"
+execute = "execute"
 
 %type Token
 
 %eofval{
-    return new Token(TokenConstants.TkFinal, null,  yyline, yycolumn);
+    return new Token(TokenConstants.TkFinal, yytext(),  yyline, yycolumn);
 %eofval}
 %%
 
 {create} {return new Token(TokenConstants.TkCreate, yytext(), yyline, yycolumn);}
-{digit}* {return new Token(TokenConstants.TkNum, yytext(), yyline, yycolumn);}
+{digit}+ {return new Token(TokenConstants.TkNum, yytext(), yyline, yycolumn);}
 {True} {return new Token(TokenConstants.TkTrue, yytext(), yyline, yycolumn);}
 {False} {return new Token(TokenConstants.TkFalse, yytext(), yyline, yycolumn);}
 {letter} {return new Token(TokenConstants.TkCaracter, yytext(), yyline, yycolumn);}
@@ -68,7 +73,14 @@ else = "else"
 {bool} {return new Token(TokenConstants.TkBool, yytext(),  yyline, yycolumn);}
 {if} {return new Token(TokenConstants.TkIf, yytext(),  yyline, yycolumn);}
 {else} {return new Token(TokenConstants.TkElse, yytext(),  yyline, yycolumn);}
-
+{end} {return new Token(TokenConstants.TkEnd, yytext(),  yyline, yycolumn);}
+{store} {return new Token(TokenConstants.TkStore, yytext(),  yyline, yycolumn);}
+{bot} {return new Token(TokenConstants.TkBot, yytext(), yyline, yycolumn);}
+{activate} {return new Token(TokenConstants.TkActivate, yytext(), yyline, yycolumn);}
+{execute} {return new Token(TokenConstants.TkExecute, yytext(), yyline, yycolumn);}
 {letter}({letter}|{digit})* { return new Token(TokenConstants.TkIdent, yytext(),  yyline, yycolumn); }
 
+
 {whitespace} {/* ignorar */}
+{coments} {/* ignorar */}
+[^] { return new Token(TokenConstants.TkError, yytext(), yyline, yycolumn); }

@@ -1,3 +1,5 @@
+//Esta parte contiene todos los tokens que usa nuestro Lexer
+
 public enum TokenConstants {
     TkIdent,
     TkNum,
@@ -25,7 +27,14 @@ public enum TokenConstants {
     TkMayor,
     TkMayorIgual,
     TkIgual,
+    TkEnd,
     TkFinal,
     TkIf, 
-    TkElse
+    TkElse,
+    TkStore,
+    TkExecute,
+    TkError,
+    TkBot, 
+    TkActivate
+    
 }
