@@ -2,20 +2,22 @@
 public class Token {
     private TokenConstants tipo;
     private String lexema;
-    public Token(TokenConstants tipo, String lexema){
+    private Integer fila; 
+    private Integer columna;
+    public Token(TokenConstants tipo, String lexema, Integer fila, Integer columna){
         this.tipo = tipo;
         this.lexema = lexema;
+        this.fila = fila;
+        this.columna = columna;
     } 
 
     @Override
     public String toString(){
-
+        String ubicacion = " "+fila+" "+ columna + "";
         //esta serie de ifs lo que hacen es controlar que tipo de token recibo, definiendo su comportamiento
         if (this.tipo == TokenConstants.TkIdent || this.tipo == TokenConstants.TkNum ||this.tipo == TokenConstants.TkCaracter){
-            return ""+tipo + "(" + lexema + ")";
-        } else if (this.tipo == TokenConstants.TkCreate) {
-            return ""+tipo;
-        } else if (
+            return ""+tipo + "(" + lexema + ")" + ubicacion;
+        }  else if (
             this.tipo == TokenConstants.TkTrue || 
             this.tipo == TokenConstants.TkFalse ||
             this.tipo == TokenConstants.TkComa||
@@ -35,9 +37,14 @@ public class Token {
             this.tipo == TokenConstants.TkMenor||
             this.tipo == TokenConstants.TkMayorIgual||
             this.tipo == TokenConstants.TkMenorIgual||
-            this.tipo == TokenConstants.TkIgual
+            this.tipo == TokenConstants.TkIgual ||
+            this.tipo == TokenConstants.TkWhile ||
+            this.tipo == TokenConstants.TkBool||
+            this.tipo == TokenConstants.TkIf ||
+            this.tipo == TokenConstants.TkElse||
+            this.tipo == TokenConstants.TkCreate
             )  {
-            return ""+tipo;
+            return ""+tipo+ ubicacion;
         } 
         return ""+tipo;
     }

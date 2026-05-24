@@ -25,5 +25,7 @@ public enum TokenConstants {
     TkMayor,
     TkMayorIgual,
     TkIgual,
-    TkFinal
+    TkFinal,
+    TkIf, 
+    TkElse
 }
