@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-public class Main {
-
-    
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-    }
-}
-=======
 //Estas son las libreriaas que utilizamos
 import java.io.*;
 import java.nio.file.Files;
@@ -18,9 +9,8 @@ public class Main {
   public static void main(String[] args) throws Exception {
 
     // Ruta del archivo que voy a leer, debe estar en la carpeta src
-		//importante: Si se sube un archivo con otro nombre que no sea "test.txt" el programa va a fallar
-
-    String ruta_archivo = "test.txt";
+	
+    String ruta_archivo = args[1];
 		
 		//estructura try catch, que sirve para que el programa no explote si hay un fallo al leer el archivo 
     try {
@@ -45,7 +35,7 @@ public class Main {
 				if (tk.tipo() == TokenConstants.TkFinal){
 					break;
 				} else if (tk.tipo() == TokenConstants.TkError){
-					String new_error = "Se detecto un caracter inesperado " + tk.lexema()+ " Fila, " +tk.fila()+ " columna " +tk.columna() +"\n";
+					String new_error = "Error: Caracter inesperado \"" + tk.lexema()+ "\" en la fila " +tk.fila()+ ", columna " +tk.columna() +"\n";
 					errores = errores + new_error;
 				} else {
 					String new_token = tk + " ";
@@ -56,7 +46,6 @@ public class Main {
 			if (errores.length() == 0){
 				System.out.println(salida);
 			} else {
-				System.err.println("Se detectaron caracteres inesperados :(");
 				System.err.println(errores);
 			}
       
@@ -66,4 +55,3 @@ public class Main {
 
   }
 }
->>>>>>> 0b270d8e9be0a53e3b3a1e519828483215d1d59f

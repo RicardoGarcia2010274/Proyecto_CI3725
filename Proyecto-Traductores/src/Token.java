@@ -11,12 +11,6 @@ public class Token {
     */
     private TokenConstants tipo;
     private String lexema;
-<<<<<<< HEAD
-    public Token(TokenConstants tipo, String lexema){
-
-        this.tipo = tipo; //tipo del token, de los enumerados en TokenConstants
-        this.lexema = lexema; //la cadena que reconoce el token 
-=======
     private Integer fila; 
     private Integer columna;
     public Token(TokenConstants tipo, String lexema, Integer fila, Integer columna){
@@ -24,7 +18,6 @@ public class Token {
         this.lexema = lexema;
         this.fila = fila;
         this.columna = columna;
->>>>>>> 0b270d8e9be0a53e3b3a1e519828483215d1d59f
     } 
 
     /*
@@ -38,9 +31,11 @@ public class Token {
     public String toString(){
         String ubicacion = " "+fila+" "+ columna + "";
         //esta serie de ifs lo que hacen es controlar que tipo de token recibo, definiendo su comportamiento
-        if (this.tipo == TokenConstants.TkIdent || this.tipo == TokenConstants.TkNum ||this.tipo == TokenConstants.TkCaracter){
+        if (this.tipo == TokenConstants.TkNum || this.tipo == TokenConstants.TkCaracter){
             return ""+tipo + "(" + lexema + ")" + ubicacion;
-        }  else if (
+        } else if (this.tipo == TokenConstants.TkIdent){
+            return ""+tipo + "(\"" + lexema + "\")" + ubicacion;
+        } else if (
             this.tipo == TokenConstants.TkTrue || 
             this.tipo == TokenConstants.TkFalse ||
             this.tipo == TokenConstants.TkComa||
@@ -96,4 +91,3 @@ public class Token {
         return this.columna;
     }
 }
-

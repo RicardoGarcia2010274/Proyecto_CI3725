@@ -27,9 +27,6 @@ public enum TokenConstants {
     TkMayor,
     TkMayorIgual,
     TkIgual,
-<<<<<<< HEAD
-    TkEnd
-=======
     TkEnd,
     TkFinal,
     TkIf, 
@@ -38,7 +35,24 @@ public enum TokenConstants {
     TkExecute,
     TkError,
     TkBot, 
-    TkActivate
+    TkActivate,
+    TkOn,
+    TkChar,
+    TkInt,
+    TkReceive,
+    TkSend,
+    TkAdvance,
+    TkDeactivate,
+    TkCollect,
+    TkDrop,
+    TkLeft,
+    TkRight,
+    TkUp,
+    TkDown,
+    TkRead,
+    TkAs,
+    TkDefault,
+    TkMe,
+    TkDesigual
     
->>>>>>> 0b270d8e9be0a53e3b3a1e519828483215d1d59f
 }
